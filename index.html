@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <!-- Khai báo bảng mã ký tự UTF-8 hỗ trợ hiển thị đầy đủ tiếng Việt và các ký tự quốc tế -->
+    <meta charset="UTF-8">
+
+    <!-- Meta viewport: Tối quan trọng cho thiết kế Responsive, giúp trang web co giãn tương thích tốt trên mọi kích thước màn hình (Mobile, Tablet, Desktop) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Meta description: Cung cấp mô tả ngắn gọn cho công cụ tìm kiếm (tốt cho SEO) khi hiển thị kết quả tìm kiếm -->
+    <meta name="description" content="Portfolio cá nhân của Front-end Developer - Giới thiệu bản thân, kỹ năng, các dự án tiêu biểu và thông tin liên hệ.">
+
+    <title>Portfolio Cá Nhân | Front-end Developer</title>
+</head>
+<body>
+
+    <!-- 
+      ==========================================================================
+      1. THẺ <header>: KHỐI ĐẦU TRANG (HEADER)
+      --------------------------------------------------------------------------
+      - VAI TRÒ: Đại diện cho phần mở đầu của trang web hoặc của một phân đoạn (section).
+      - Ý NGHĨA SEMANTIC: Thường chứa logo thương hiệu, tên tác giả, slogan, và thanh
+        điều hướng chính. Giúp các công cụ tìm kiếm (Search Engines) và trình đọc màn hình
+        (Screen Readers) nhanh chóng xác định được danh tính và ngữ cảnh của website.
+      ==========================================================================
+    -->
+    <header>
+        <div class="header-brand">
+            <!-- Thẻ <h1> đại diện cho tiêu đề quan trọng nhất của toàn bộ trang web (thường chỉ nên có 1 thẻ h1 trên mỗi trang để tối ưu SEO) -->
+            <h1>Đinh Hữu Phước</h1>
+            <p>Junior Front-end Developer / Web Enthusiast</p>
+        </div>
+
+        <!-- 
+          ----------------------------------------------------------------------
+          THẺ <nav>: KHỐI ĐIỀU HƯỚNG (NAVIGATION)
+          ----------------------------------------------------------------------
+          - VAI TRÒ: Chứa danh sách các liên kết điều hướng chính của trang web.
+          - Ý NGHĨA SEMANTIC: Báo cho trình duyệt và thiết bị hỗ trợ tiếp cận biết rằng
+            đây là cụm menu chính. Người khiếm thị khi dùng Screen Reader có thể dùng phím tắt
+            để nhảy thẳng tới menu này hoặc bỏ qua nếu muốn xem nội dung chính.
+          - BEST PRACTICE: Luôn đặt các liên kết bên trong danh sách <ul> / <li> để tạo cấu trúc cây logic.
+          ----------------------------------------------------------------------
+        -->
+        <nav aria-label="Menu chính">
+            <ul>
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#skills-projects">Kỹ năng & Dự án</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 
+      ==========================================================================
+      2. THẺ <main>: KHỐI NỘI DUNG CHÍNH (MAIN CONTENT)
+      --------------------------------------------------------------------------
+      - VAI TRÒ: Bao bọc toàn bộ nội dung độc nhất, cốt lõi của tài liệu HTML.
+      - Ý NGHĨA SEMANTIC: Mỗi trang web chỉ được phép có DUY NHẤT một thẻ <main>
+        (không tính các <main> bị ẩn bởi thuộc tính hidden). Nó loại trừ các thành phần
+        lặp lại ở nhiều trang như header, footer, thanh bên dùng chung (sidebar), link bản quyền.
+      - TÍNH NĂNG TIẾP CẬN (ACCESSIBILITY): Giúp người dùng dùng phím bấm để "Skip to main content"
+        nhanh chóng mà không cần duyệt qua toàn bộ header.
+      ==========================================================================
+    -->
+    <main>
+
+        <!-- 
+          ----------------------------------------------------------------------
+          SECTION 1: THẺ <section> - GIỚI THIỆU BẢN THÂN (ABOUT ME)
+          ----------------------------------------------------------------------
+          - VAI TRÒ: Định nghĩa một phân đoạn độc lập theo chủ đề trong tài liệu.
+          - Ý NGHĨA SEMANTIC: Một <section> chuẩn HTML5 nên luôn đi kèm một thẻ tiêu đề
+            (heading từ <h2> - <h6>) để định danh chủ đề của phân đoạn đó.
+          - LƯU Ý: Không dùng <section> chỉ để bọc style CSS đơn thuần; nếu chỉ cần một khối
+            chứa để chỉnh giao diện, hãy dùng <div>.
+          ----------------------------------------------------------------------
+        -->
+        <section id="about">
+            <h2>Giới thiệu bản thân</h2>
+            
+            <figure>
+                <img src="https://via.placeholder.com/150" alt="Ảnh chân dung của Nguyễn Văn A">
+                <figcaption>Đinh Hữu Phước - Lập trình viên Front-end tương lai</figcaption>
+            </figure>
+
+            <p>
+                Xin chào! Tôi là một lập trình viên Front-end với niềm đam mê xây dựng giao diện web 
+                hiện đại, trực quan và chuẩn tiếp cận (Web Accessibility). Hiện tại tôi đang tập trung 
+                trau dồi HTML5, CSS3, JavaScript và các công nghệ web nền tảng.
+            </p>
+            <p>
+                Mục tiêu của tôi là tạo ra những trải nghiệm người dùng mượt mà, tối ưu hiệu suất và 
+                tuân thủ các tiêu chuẩn code sạch (Clean Code).
+            </p>
+        </section>
+
+        <!-- 
+          ----------------------------------------------------------------------
+          SECTION 2: THẺ <section> - KỸ NĂNG & DỰ ÁN TIÊU BIỂU (SKILLS / PROJECTS)
+          ----------------------------------------------------------------------
+          - VAI TRÒ: Trình bày năng lực chuyên môn và các sản phẩm cá nhân đã thực hiện.
+          - Ý NGHĨA SEMANTIC: 
+            + Kết hợp <article> bên trong <section>: Thẻ <article> đại diện cho một nội dung
+              độc lập, có thể tái sử dụng hoặc tự đứng một mình (ví dụ: từng dự án, bài blog).
+            + Sử dụng thẻ danh sách <ul> để hiển thị tập hợp kỹ năng một cách mạch lạc.
+          ----------------------------------------------------------------------
+        -->
+        <section id="skills-projects">
+            <h2>Kỹ năng & Dự án tiêu biểu</h2>
+
+            <!-- Nhóm kỹ năng chuyên môn -->
+            <div class="skills-container">
+                <h3>Kỹ năng chuyên môn</h3>
+                <ul>
+                    <li>Semantic HTML5 & Web Accessibility (a11y)</li>
+                    <li>CSS3, Flexbox, CSS Grid & Responsive Design</li>
+                    <li>JavaScript hiện đại (ES6+)</li>
+                    <li>Git & GitHub trong quản lý mã nguồn</li>
+                </ul>
+            </div>
+
+            <!-- Danh sách các dự án tiêu biểu -->
+            <div class="projects-container">
+                <h3>Dự án tiêu biểu</h3>
+
+                <!-- 
+                  Thẻ <article>: Đại diện cho một dự án cụ thể độc lập. 
+                  Người đọc có thể trích xuất riêng khối thông tin này mà vẫn hiểu đầy đủ ngữ cảnh.
+                -->
+                <article class="project-card">
+                    <h4>Landing Page Doanh Nghiệp</h4>
+                    <p>Trang đích giới thiệu sản phẩm công nghệ với giao diện thân thiện và tốc độ tải trang nhanh.</p>
+                    <p><strong>Công nghệ sử dụng:</strong> HTML5, CSS3 Responsive</p>
+                    <a href="#" target="_blank" rel="noopener noreferrer">Xem Demo</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">Mã nguồn trên GitHub</a>
+                </article>
+
+                <article class="project-card">
+                    <h4>Trang Portfolio Cá Nhân</h4>
+                    <p>Website portfolio cá nhân xây dựng chuẩn Semantic HTML5, cấu trúc rõ ràng, tối ưu SEO.</p>
+                    <p><strong>Công nghệ sử dụng:</strong> Semantic HTML5, CSS Grid</p>
+                    <a href="#" target="_blank" rel="noopener noreferrer">Xem Demo</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">Mã nguồn trên GitHub</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- 
+          ----------------------------------------------------------------------
+          SECTION 3: THẺ <section> - LIÊN HỆ (CONTACT)
+          ----------------------------------------------------------------------
+          - VAI TRÒ: Thu thập thông tin gửi tin nhắn và cung cấp phương thức liên hệ trực tiếp.
+          - Ý NGHĨA SEMANTIC:
+            + Sử dụng thẻ <form> với các trường dữ liệu có thẻ <label> gắn liền với <input>/<textarea>
+              qua thuộc tính `for` và `id` (rất quan trọng cho Accessibility).
+            + Thẻ <address>: Dùng để chứa thông tin liên lạc của tác giả/chủ sở hữu trang.
+          ----------------------------------------------------------------------
+        -->
+        <section id="contact">
+            <h2>Liên hệ với tôi</h2>
+            <p>Nếu bạn có câu hỏi hoặc muốn hợp tác, hãy để lại tin nhắn qua biểu mẫu bên dưới:</p>
+
+            <!-- Form liên hệ -->
+            <form action="#" method="POST">
+                <div>
+                    <label for="fullName">Họ và tên:</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Nhập họ và tên..." required>
+                </div>
+
+                <div>
+                    <label for="email">Địa chỉ Email:</label>
+                    <input type="email" id="email" name="email" placeholder="email@example.com" required>
+                </div>
+
+                <div>
+                    <label for="message">Nội dung tin nhắn:</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Để lại lời nhắn của bạn..." required></textarea>
+                </div>
+
+                <button type="submit">Gửi tin nhắn</button>
+            </form>
+
+            <!-- Thông tin liên hệ trực tiếp -->
+            <address>
+                <p>Email: <a href="mailto:dinhuuphuoc@example.com">huuphuocqnal94@gmail.com</a></p>
+                <p>Điện thoại: <a href="tel:+84123456789">(+84) 123 456 789</a></p>
+                <p>Địa chỉ: Biên  Hòa, Việt Nam</p>
+            </address>
+        </section>
+
+    </main>
+
+    <!-- 
+      ==========================================================================
+      3. THẺ <footer>: KHỐI CHÂN TRANG (FOOTER)
+      --------------------------------------------------------------------------
+      - VAI TRÒ: Đại diện cho phần kết thúc của trang web hoặc của một phân đoạn.
+      - Ý NGHĨA SEMANTIC: Thường chứa thông tin bản quyền (copyright), liên kết mạng
+        xã hội, điều khoản sử dụng, chính sách bảo mật hoặc nút quay về đầu trang.
+      - Giúp người dùng nắm được thông tin pháp lý và kênh liên kết ngoài của chủ sở hữu.
+      ==========================================================================
+    -->
+    <footer>
+        <p>&copy; 2026 Đinh Hữu Phước. Bản quyền thuộc về tác giả.</p>
+        
+        <!-- Danh sách liên kết mạng xã hội -->
+        <nav aria-label="Liên kết mạng xã hội">
+            <ul>
+                <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+            </ul>
+        </nav>
+
+        <p><a href="#top">Quay về đầu trang &uarr;</a></p>
+    </footer>
+
+</body>
+</html>
