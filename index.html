@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio cá nhân của Nguyễn Tấn Điền - Sinh viên ngành Công nghệ thông tin">
+    <title>Nguyễn Tấn Điền | Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --bg-color: #f4f4f9;
+            --text-color: #333;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--accent-color);
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #bdc3c7;
+        }
+        
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        #hero h1 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+        }
+        
+        .skills-list, .projects-list {
+            list-style-position: inside;
+            margin-left: 1rem;
+        }
+        
+        .skills-list li, .projects-list li {
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--secondary-color);
+            color: white;
+            margin-top: 2rem;
+        }
+        
+        .social-links {
+            margin-top: 0.5rem;
+        }
+        
+        .social-links a {
+            color: #ecf0f1;
+            margin: 0 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- <header>: Xác định phần đầu trang, chứa tiêu đề hoặc thanh điều hướng. Giúp trình duyệt và bot tìm kiếm (SEO) hiểu đây là khu vực chứa các công cụ điều hướng chính của trang web. -->
+    <header>
+        <!-- <nav>: Xác định khu vực chứa các liên kết điều hướng chính. Quan trọng cho Web Accessibility (screen readers) để người dùng khuyết tật dễ dàng tìm thấy menu điều hướng. -->
+        <nav>
+            <ul>
+                <li><a href="#hero">Giới thiệu</a></li>
+                <li><a href="#skills">Kỹ năng</a></li>
+                <li><a href="#projects">Dự án</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- <main>: Xác định nội dung chính, cốt lõi của tài liệu. Trình đọc màn hình và công cụ tìm kiếm ưu tiên quét nội dung trong thẻ này. Mỗi trang chỉ nên có duy nhất một thẻ <main>. -->
+    <main>
+
+        <!-- <section>: Đại diện cho một phần nội dung độc lập mang một chủ đề cụ thể, nên chứa một thẻ heading (h1-h6). Giúp phân chia cấu trúc tài liệu rõ ràng, tốt cho SEO và khả năng tiếp cận. -->
+        <section id="hero">
+            <h1>Xin chào, tôi là Nguyễn Tấn Điền</h1>
+            <p>Tôi là một sinh viên ngành Công nghệ Thông tin đam mê học hỏi và phát triển. Tôi định hướng trở thành một lập trình viên chuyên nghiệp với mong muốn áp dụng các kiến thức đã học vào thực tế để tạo ra những sản phẩm công nghệ hữu ích.</p>
+        </section>
+
+        <!-- <section>: Phân vùng nội dung mô tả chi tiết về kỹ năng và chuyên môn. -->
+        <section id="skills">
+            <h2>Kỹ năng & Chuyên môn</h2>
+            <p>Trong quá trình học tập, tôi đã trau dồi và làm quen với nhiều công nghệ, công cụ khác nhau:</p>
+            <ul class="skills-list">
+                <li><strong>Lập trình:</strong> Ngôn ngữ Python (Xử lý dữ liệu, lập trình cơ bản).</li>
+                <li><strong>Cơ sở dữ liệu:</strong> Phân tích, thiết kế và quản trị CSDL với SQL Server, MySQL.</li>
+                <li><strong>Thiết kế UI/UX:</strong> Sử dụng thành thạo Figma và FigJam để phác thảo, thiết kế giao diện người dùng.</li>
+                <li><strong>Mạng máy tính:</strong> Hiểu biết nền tảng về mạng, thiết kế mô hình với Cisco Packet Tracer.</li>
+            </ul>
+        </section>
+
+        <!-- <section>: Phân vùng giới thiệu các dự án đã thực hiện, cung cấp minh chứng cho kỹ năng thực hành. -->
+        <section id="projects">
+            <h2>Dự án tiêu biểu</h2>
+            <ul class="projects-list">
+                <li><strong>Thiết kế giao diện ứng dụng quản lý:</strong> Lên ý tưởng và thiết kế UI/UX toàn diện cho ứng dụng quản lý nghiệp vụ, tập trung vào trải nghiệm người dùng tối ưu bằng Figma.</li>
+                <li><strong>Ứng dụng học tập:</strong> Tham gia phát triển và thiết kế các luồng chức năng hỗ trợ sinh viên quản lý tài liệu và tiến độ học tập.</li>
+                <li><strong>Website Front-end cá nhân:</strong> Xây dựng các trang web front-end tĩnh sử dụng HTML, CSS và JavaScript nguyên bản, đảm bảo tính responsive và Semantic chuẩn SEO.</li>
+            </ul>
+        </section>
+
+        <!-- <section>: Phân vùng thông tin liên hệ, giúp người dùng hoặc nhà tuyển dụng có thể dễ dàng kết nối. -->
+        <section id="contact">
+            <h2>Thông tin liên hệ</h2>
+            <p>Tôi luôn sẵn sàng cho các cơ hội hợp tác và học hỏi mới. Hãy kết nối với tôi qua:</p>
+            <ul>
+                <li>Email: nguyentandien.it@example.com</li>
+                <li>Điện thoại: (012) 345-6789</li>
+                <li>Địa chỉ: TP. Hồ Chí Minh, Việt Nam</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- <footer>: Xác định phần chân trang. Thường chứa thông tin bản quyền, liên kết phụ hoặc thông tin tác giả. Giúp định dạng rõ ranh giới kết thúc nội dung chính. -->
+    <footer>
+        <p>&copy; 2026 Nguyễn Tấn Điền. Đã đăng ký bản quyền.</p>
+        <div class="social-links">
+            <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a> | 
+            <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a> | 
+            <a href="#" target="_blank" rel="noopener noreferrer">Facebook</a>
+        </div>
+    </footer>
+
+</body>
+</html>
