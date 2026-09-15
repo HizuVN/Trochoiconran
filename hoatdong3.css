@@ -1,0 +1,113 @@
+/* =========================================
+   1. KHAI BÁO BIẾN CSS & RESET 
+   (Tối ưu giá trị cứng)
+   ========================================= */
+:root {
+    --spacing-unit: 20px; /* Biến quản lý khoảng cách chung */
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --bg-color: #f4f4f9;
+    --text-color: #333;
+}
+
+/* Sử dụng Shorthand properties cho margin/padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: var(--spacing-unit);
+}
+
+/* =========================================
+   2. BỐ CỤC CHÍNH SỬ DỤNG CSS GRID
+   (Tiêu chí 1, 3, 4, 5)
+   ========================================= */
+.grid-container {
+    display: grid;
+    /* Phân bổ khu vực: Header/Footer toàn chiều ngang, Sidebar bên trái, Main bên phải */
+    grid-template-areas: 
+        "header header"
+        "sidebar main"
+        "footer footer";
+    grid-template-columns: 250px 1fr; 
+    gap: var(--spacing-unit); /* Quản lý khoảng cách các khối bằng gap */
+    min-height: 90vh;
+}
+
+/* Shorthand padding và background được gộp gọn gàng */
+.header {
+    grid-area: header;
+    background-color: var(--primary-color);
+    color: white;
+    padding: var(--spacing-unit);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: var(--spacing-unit);
+    border-radius: 8px;
+}
+
+.main-content {
+    grid-area: main;
+    background-color: white;
+    padding: var(--spacing-unit);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shorthand box-shadow */
+}
+
+.footer {
+    grid-area: footer;
+    background-color: var(--primary-color);
+    color: white;
+    padding: var(--spacing-unit);
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* =========================================
+   3. THÀNH PHẦN CON SỬ DỤNG FLEXBOX
+   (Tiêu chí 2, 4, 5)
+   ========================================= */
+.skills-section {
+    margin-top: calc(var(--spacing-unit) * 1.5);
+}
+
+.skills-container {
+    display: flex; /* Kích hoạt Flexbox cho danh sách kỹ năng */
+    flex-wrap: wrap; /* Tự động rớt dòng nếu hết chỗ */
+    gap: 15px; /* Quản lý khoảng cách giữa các skill-item bằng gap */
+    margin-top: 15px;
+}
+
+.skill-item {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px; /* Shorthand: trên-dưới 10px, trái-phải 20px */
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+/* =========================================
+   4. TỐI ƯU HIỂN THỊ TRÊN ĐIỆN THOẠI (Responsive)
+   ========================================= */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Chuyển về 1 cột */
+        grid-template-areas: 
+            "header"
+            "sidebar"
+            "main"
+            "footer";
+    }
+}
