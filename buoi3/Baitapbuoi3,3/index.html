@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid & Flexbox Layout</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Bố cục chính sử dụng Grid -->
+    <div class="grid-container">
+        
+        <!-- Header với Menu (Sử dụng Flexbox) -->
+        <header class="header">
+            <h1 class="logo">MyWebsite</h1>
+            <nav class="menu">
+                <a href="#">Trang chủ</a>
+                <a href="#">Sản phẩm</a>
+                <a href="#">Giới thiệu</a>
+                <a href="#">Liên hệ</a>
+            </nav>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Danh mục</h2>
+            <ul>
+                <li><a href="#">Mục 1</a></li>
+                <li><a href="#">Mục 2</a></li>
+                <li><a href="#">Mục 3</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content với Cards (Sử dụng Flexbox) -->
+        <main class="main-content">
+            <h2>Sản phẩm nổi bật</h2>
+            <div class="cards-wrapper">
+                <div class="card">
+                    <h3>Sản phẩm A</h3>
+                    <p>Mô tả ngắn gọn về sản phẩm A. Thiết kế đẹp và tối ưu.</p>
+                    <button class="btn">Mua ngay</button>
+                </div>
+                <div class="card">
+                    <h3>Sản phẩm B</h3>
+                    <p>Mô tả ngắn gọn về sản phẩm B. Chất lượng cao, giá tốt.</p>
+                    <button class="btn">Mua ngay</button>
+                </div>
+                <div class="card">
+                    <h3>Sản phẩm C</h3>
+                    <p>Mô tả ngắn gọn về sản phẩm C. Đang được khuyến mãi.</p>
+                    <button class="btn">Mua ngay</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 Bản quyền thuộc về bạn. Đã tối ưu hóa mã nguồn.</p>
+        </footer>
+    </div>
+</body>
+</html>

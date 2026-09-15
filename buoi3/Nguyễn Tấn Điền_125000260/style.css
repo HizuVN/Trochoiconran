@@ -1,0 +1,66 @@
+/* Thiết lập cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* =========================================
+   PHẦN 1: FLEXBOX (CĂN GIỮA)
+   ========================================= */
+.container {
+    height: 100vh; /* Đảm bảo chiều cao toàn màn hình */
+    background-color: #f8f9fa;
+    
+    /* Sử dụng Flexbox để căn giữa thẻ box bên trong */
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center;     /* Căn giữa theo chiều dọc */
+}
+
+.box {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* =========================================
+   PHẦN 2: CSS GRID (3 CỘT)
+   ========================================= */
+.grid-container {
+    padding: 40px;
+    
+    /* Bố cục lưới 3 cột bằng nhau */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    
+    /* Sử dụng thuộc tính gap thay cho margin truyền thống */
+    gap: 20px; 
+}
+
+/* Mỗi cột chứa thẻ có màu nền xám nhạt và bo góc 10px */
+.grid-container > div {
+    background-color: lightgray;
+    border-radius: 10px;
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* =========================================
+   CHECKLIST: TỰ CO GIÃN (RESPONSIVE)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    .grid-container {
+        /* Tự động co giãn về 1 cột khi màn hình nhỏ (điện thoại) */
+        grid-template-columns: 1fr;
+    }
+}
