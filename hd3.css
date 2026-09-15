@@ -1,0 +1,99 @@
+/* =========================================
+   1. KHAI BÁO BIẾN CSS (CSS Variables)
+   Thay thế các giá trị cứng (như 20px, mã màu) 
+   ========================================= */
+:root {
+    --spacing-unit: 20px;
+    --radius-unit: 8px;
+    --bg-body: #eef2f3;
+    --bg-card: #ffffff;
+    --bg-dark: #2c3e50;
+    --color-primary: #3498db;
+    --text-light: #ffffff;
+    --shadow-default: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+/* =========================================
+   2. RESET CSS
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-body);
+    padding: var(--spacing-unit);
+}
+
+/* =========================================
+   3. KHỐI GRID: Bố cục chính của trang
+   ========================================= */
+.portfolio-layout {
+    display: grid;
+    min-height: 90vh;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    gap: var(--spacing-unit); /* Sử dụng gap thay vì margin */
+}
+
+/* Gộp class: Header và Footer có nhiều thuộc tính UI giống nhau */
+.header, .footer {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    text-align: center;
+    border-radius: var(--radius-unit);
+    padding: var(--spacing-unit) 15px; /* Shorthand padding: trên/dưới trái/phải */
+}
+.header { grid-area: header; }
+.footer { grid-area: footer; }
+
+/* Gộp class: Sidebar và Main Content có cùng style box */
+.sidebar, .main-content {
+    background-color: var(--bg-card);
+    padding: var(--spacing-unit);
+    border-radius: var(--radius-unit);
+    box-shadow: var(--shadow-default);
+}
+.sidebar { grid-area: sidebar; }
+.main-content { grid-area: main; }
+
+/* =========================================
+   4. KHỐI FLEX: Thành phần con (Thẻ kỹ năng)
+   ========================================= */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap; /* Tự động xuống dòng */
+    justify-content: center;
+    gap: 15px;
+    margin-top: var(--spacing-unit);
+}
+
+.skill-item {
+    background-color: var(--color-primary);
+    color: var(--text-light);
+    padding: 10px var(--spacing-unit);
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* =========================================
+   5. RESPONSIVE (Màn hình điện thoại)
+   ========================================= */
+@media (max-width: 768px) {
+    .portfolio-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "sidebar"
+            "main"
+            "footer";
+    }
+}
