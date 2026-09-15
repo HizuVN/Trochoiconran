@@ -1,0 +1,46 @@
+/* --- Reset CSS cơ bản --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* === TRIỂN KHAI YÊU CẦU 1: FLEXBOX === */
+.flex-wrapper {
+  display: flex;
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  align-items: center;     /* Căn giữa theo chiều dọc */
+  height: 100vh;           /* Đảm bảo chiều cao chiếm toàn bộ màn hình */
+  background-color: #f0f2f5;
+}
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  background-color: white;
+  padding: 30px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* === TRIỂN KHAI YÊU CẦU 2: CSS GRID === */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Tạo 3 cột với tỷ lệ bằng nhau */
+  gap: 20px;                             /* Khoảng cách giữa các cột */
+  margin-top: 20px;
+}
+
+.grid-item {
+  background-color: #e2e8f0; /* Màu nền xám nhạt */
+  border-radius: 10px;       /* Bo góc 10px */
+  padding: 30px 15px;
+  font-weight: bold;
+  color: #333;
+} 
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr; /* Chuyển thành 1 cột trên thiết bị nhỏ */
+  }
+}
