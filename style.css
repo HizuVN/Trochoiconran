@@ -1,0 +1,54 @@
+/* Reset CSS cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================================
+   GIẢI QUYẾT PROMPT 1: FLEXBOX
+   ========================================= */
+.flex-wrapper {
+    display: flex;
+    /* Căn giữa theo chiều ngang */
+    justify-content: center; 
+    /* Căn giữa theo chiều dọc */
+    align-items: center; 
+    /* Chiều cao toàn màn hình */
+    height: 100vh; 
+    background-color: #f4f4f9; /* Màu nền nhạt để dễ nhìn */
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* =========================================
+   GIẢI QUYẾT PROMPT 2: CSS GRID
+   ========================================= */
+.grid-section {
+    padding: 50px 20px;
+    background-color: #ffffff;
+}
+
+.grid-container {
+    display: grid;
+    /* Tạo 3 cột bằng nhau, mỗi cột chiếm 1 phân số (1 fraction) không gian */
+    grid-template-columns: repeat(3, 1fr);
+    /* Khoảng cách giữa các cột/hàng là 20px (thay thế cho margin) */
+    gap: 20px; 
+    max-width: 1000px;
+    margin: 20px auto; /* Căn giữa toàn bộ lưới trên trang */
+}
+
+.grid-item {
+    background-color: #d3d3d3; /* Màu nền xám nhạt */
+    border-radius: 10px;       /* Bo góc 10px */
+    padding: 30px;
+    text-align: center;
+    font-weight: bold;
+}
