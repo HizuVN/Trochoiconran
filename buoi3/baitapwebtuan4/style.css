@@ -1,0 +1,259 @@
+/* Từ đây thêm vào tất cả các file/folder */
+
+/* =========================================================
+   1. DESIGN SYSTEM (Biến :root - Tuần 4)
+========================================================= */
+:root {
+    /* Màu sắc */
+    --primary: #4F46E5;    /* Indigo */
+    --secondary: #10B981;  /* Emerald */
+    --bg-color: #FFFFFF;   /* Trắng */
+    
+    --gray-1: #F3F4F6;
+    --gray-2: #9CA3AF;
+    --gray-3: #374151;
+
+    /* Khoảng cách chuẩn hóa */
+    --gap-sm: 8px;
+    --gap-md: 16px;
+    --gap-lg: 24px;
+    
+    /* Các biến bổ trợ tái sử dụng */
+    --radius-md: 8px;
+    --radius-lg: 12px;
+}
+
+/* Reset CSS */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--gray-1);
+    color: var(--gray-3);
+    padding: var(--gap-lg);
+}
+
+h2 {
+    color: var(--primary);
+    margin-bottom: var(--gap-md);
+}
+
+/* =========================================================
+   2. BỐ CỤC TRANG TỔNG THỂ (CSS Grid - Tuần 3)
+========================================================= */
+.layout-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    display: grid;
+    /* Mặc định trên Mobile: Xếp dọc 1 cột duy nhất */
+    grid-template-columns: 1fr; 
+    gap: var(--gap-lg); /* KHÔNG DÙNG MARGIN, CHỈ DÙNG GAP */
+}
+
+/* Header và Footer càn quét qua tất cả các cột */
+.header, .footer {
+    grid-column: 1 / -1; 
+    background-color: var(--primary);
+    color: var(--bg-color);
+    padding: var(--gap-lg);
+    border-radius: var(--radius-lg);
+}
+
+.sidebar {
+    background-color: var(--bg-color);
+    padding: var(--gap-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.sidebar p { line-height: 1.6; }
+
+.main-content {
+    /* Đóng vai trò là thẻ cha bọc các section bên trong, dùng Flex column để nối khoảng cách bằng Gap */
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-lg);
+}
+
+/* Bẻ Form khi màn hình >= 768px (Tablet & Desktop): Trái 1fr, Phải 3fr */
+@media (min-width: 768px) {
+    .layout-container {
+        grid-template-columns: 1fr 3fr;
+    }
+}
+
+/* =========================================================
+   3. THANH ĐIỀU HƯỚNG (Flexbox - Tuần 3)
+========================================================= */
+.header {
+    display: flex;
+    justify-content: space-between; /* Đẩy Logo trái, Menu phải */
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: var(--gap-md);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-menu {
+    display: flex;
+    gap: var(--gap-lg);
+}
+
+.nav-menu a {
+    color: var(--bg-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: var(--secondary);
+}
+
+/* =========================================================
+   4. KHU VỰC ABOUT ME (Responsive - Tuần 4)
+========================================================= */
+.about-me {
+    background-color: var(--bg-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    
+    /* Mặc định ở màn hình lớn: Bố cục 2 cột ngang */
+    display: flex; 
+}
+
+.about-img { 
+    flex: 1;
+    /* Thêm padding để ảnh tách nhẹ khỏi lề, tôn lên đường viền */
+    padding: var(--gap-lg); 
+}
+
+.about-img img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    display: block; 
+    /* Viền hơi tròn, loại bỏ góc nhọn */
+    border-radius: 24px; 
+    /* Viền mang màu sắc đặc trưng của Design System */
+    border: 5px solid var(--primary); 
+    /* Bóng đổ nhẹ cùng tông màu Xanh Tím */
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.2);
+}
+    
+.about-text {
+    flex: 1;
+    padding: var(--gap-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.about-text p { line-height: 1.6; margin-bottom: var(--gap-md); }
+    
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--bg-color);
+    padding: var(--gap-sm) var(--gap-lg);
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #3730A3;
+}
+
+/* Ép About Me thành 1 cột dọc trên Mobile (< 768px) */
+@media (max-width: 767px) {
+    .about-me {
+        flex-direction: column;
+    }
+}
+
+/* =========================================================
+   5. DANH SÁCH KỸ NĂNG (Flexbox Wrap - Tuần 3)
+========================================================= */
+.skills-section {
+    background-color: var(--bg-color);
+    padding: var(--gap-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap; /* Tự động xuống dòng khi hết không gian */
+    gap: var(--gap-md); /* Khai báo Gap thay cho margin */
+}
+
+.skill-tag {
+    background-color: var(--secondary);
+    color: var(--bg-color);
+    padding: var(--gap-sm) var(--gap-md);
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* =========================================================
+   6. KHU VỰC DỊCH VỤ (Mobile First Grid Breakpoints - Tuần 4)
+========================================================= */
+.services-section {
+    background-color: var(--bg-color);
+    padding: var(--gap-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.services-grid {
+    display: grid;
+    gap: var(--gap-lg);
+    
+    /* Mặc định Mobile (Mobile First): 1 Cột */
+    grid-template-columns: 1fr;
+}
+
+.service-card {
+    background-color: var(--gray-1);
+    padding: var(--gap-lg);
+    border-radius: var(--radius-md);
+    text-align: center;
+    border-top: 5px solid var(--primary);
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    background-color: var(--primary);
+    color: var(--bg-color);
+}
+
+/* Màn hình Tablet (từ 768px): Tự động lên 2 cột */
+@media (min-width: 768px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Màn hình Desktop (từ 1024px): Đội hình 4 cột */
+@media (min-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

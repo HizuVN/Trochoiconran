@@ -1,0 +1,92 @@
+/* Từ đây thêm vào tất cả các file/folder */
+
+/* Reset CSS */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F3F4F6; /* Màu xám nhạt */
+    color: #1F2937;
+    padding: 24px;
+}
+
+/* =========================================================
+   1. CSS GRID: BỐ CỤC KHUNG LỚN (Macro Layout)
+========================================================= */
+.portfolio-layout {
+    max-width: 1200px;
+    margin: 0 auto; /* Chỉ dùng margin để căn giữa màn hình cho container */
+    
+    /* Kích hoạt Grid */
+    display: grid;
+    /* Chia 2 cột: Sidebar (1 phần) và Main (3 phần) */
+    grid-template-columns: 1fr 3fr;
+    /* Dùng GAP để tạo khoảng cách thống nhất, tuyệt đối không dùng margin cho thẻ con */
+    gap: 24px; 
+}
+
+/* Header và Footer chiếm toàn bộ chiều ngang */
+.header, .footer {
+    grid-column: 1 / -1; /* Lệnh trải dài từ vạch grid đầu tiên đến vạch cuối cùng */
+    background-color: #4F46E5; /* Xanh Tím */
+    color: #FFFFFF;
+    padding: 32px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.sidebar {
+    background-color: #FFFFFF;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar h2 { color: #4F46E5; margin-bottom: 16px; }
+.sidebar p { line-height: 1.6; color: #4B5563; }
+
+.main-content {
+    background-color: #FFFFFF;
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    
+    /* Mẹo nhỏ: Dùng Flexbox cột cho Main Content để h2 và skills-container tự động có gap */
+    display: flex;
+    flex-direction: column;
+    gap: 24px; 
+}
+
+.main-content h2 { color: #4F46E5; }
+
+/* =========================================================
+   2. FLEXBOX: DANH SÁCH KỸ NĂNG (Micro Layout)
+========================================================= */
+.skills-container {
+    /* Kích hoạt Flexbox */
+    display: flex;
+    /* Tự động rớt xuống dòng khi các thẻ tag xếp đầy hàng ngang */
+    flex-wrap: wrap; 
+    /* Dùng GAP thay vì dùng margin-right / margin-bottom ở từng thẻ tag */
+    gap: 12px; 
+}
+
+.skill-tag {
+    background-color: #10B981; /* Xanh Ngọc */
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border-radius: 99px; /* Bo tròn hoàn toàn */
+    font-weight: bold;
+    font-size: 14px;
+    cursor: default;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.skill-tag:hover {
+    background-color: #059669; /* Đậm hơn khi hover */
+    transform: translateY(-2px);
+}

@@ -1,66 +1,84 @@
-/* Thiết lập cơ bản */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Từ đây thêm vào tất cả các file/folder */
+:root {
+    --primary: #4F46E5;
+    --secondary: #10B981;
+    --gray-1: #F3F4F6;
+    --gray-2: #9CA3AF;
+    --gray-3: #374151;
+    --bg-color: #FFFFFF;
 }
 
 body {
+    background-color: var(--gray-1);
     font-family: Arial, sans-serif;
-}
-
-/* =========================================
-   PHẦN 1: FLEXBOX (CĂN GIỮA)
-   ========================================= */
-.container {
-    height: 100vh; /* Đảm bảo chiều cao toàn màn hình */
-    background-color: #f8f9fa;
-    
-    /* Sử dụng Flexbox để căn giữa thẻ box bên trong */
     display: flex;
-    justify-content: center; /* Căn giữa theo chiều ngang */
-    align-items: center;     /* Căn giữa theo chiều dọc */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
-.box {
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+.product-card {
+    background-color: var(--bg-color);
+    border: 2px solid var(--primary);
+    border-radius: 12px;
+    padding: 16px; /* Thu nhỏ padding một chút để ảnh tràn đẹp hơn */
+    max-width: 320px;
+    box-shadow: 0 4px 6px rgba(79, 70, 229, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* CSS cho ảnh sản phẩm vừa được thêm */
+.product-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+/* UX: Card nổi lên khi hover */
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 24px rgba(79, 70, 229, 0.2);
+}
+
+.product-title {
+    color: var(--primary);
+    margin-top: 0;
     font-size: 24px;
+}
+
+.product-desc {
+    color: var(--gray-3);
+    line-height: 1.6; /* UX: Tăng khoảng cách dòng cho dễ đọc */
+}
+
+.product-btn {
+    background-color: var(--primary);
+    color: var(--bg-color);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
     font-weight: bold;
+    width: 100%;
+    /* UX: Thêm box-shadow nhẹ cho nút */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
 }
 
-/* =========================================
-   PHẦN 2: CSS GRID (3 CỘT)
-   ========================================= */
-.grid-container {
-    padding: 40px;
-    
-    /* Bố cục lưới 3 cột bằng nhau */
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    
-    /* Sử dụng thuộc tính gap thay cho margin truyền thống */
-    gap: 20px; 
+/* UX: Trạng thái hover của nút */
+.product-btn:hover {
+    background-color: #3730A3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(79, 70, 229, 0.3);
 }
 
-/* Mỗi cột chứa thẻ có màu nền xám nhạt và bo góc 10px */
-.grid-container > div {
-    background-color: lightgray;
-    border-radius: 10px;
-    padding: 40px 20px;
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-/* =========================================
-   CHECKLIST: TỰ CO GIÃN (RESPONSIVE)
-   ========================================= */
-@media screen and (max-width: 768px) {
-    .grid-container {
-        /* Tự động co giãn về 1 cột khi màn hình nhỏ (điện thoại) */
-        grid-template-columns: 1fr;
-    }
+/* UX: Trạng thái bấm (active) - Nút lún xuống */
+.product-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
 }

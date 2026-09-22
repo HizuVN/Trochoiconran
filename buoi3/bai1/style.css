@@ -1,0 +1,53 @@
+/* Từ đây thêm vào tất cả các file/folder */
+:root {
+    --primary: #4F46E5;
+    --secondary: #10B981;
+    --gray-1: #F3F4F6;
+    --gray-2: #9CA3AF;
+    --gray-3: #374151;
+    --bg-color: #FFFFFF;
+}
+
+body {
+    background-color: var(--gray-1);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.product-card {
+    background-color: var(--bg-color);
+    border: 1px solid var(--gray-2);
+    border-radius: 8px;
+    padding: 24px;
+    max-width: 300px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.product-title {
+    color: var(--primary);
+    margin-top: 0;
+}
+
+.product-desc {
+    color: var(--gray-3);
+    line-height: 1.5;
+}
+
+.product-btn {
+    background-color: var(--secondary);
+    color: var(--bg-color);
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.product-btn:hover {
+    background-color: #0d9668;
+}

@@ -1,0 +1,87 @@
+/* Từ đây thêm vào tất cả các file/folder */
+
+/* Reset CSS cơ bản */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F3F4F6;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.title {
+    color: #374151;
+    margin: 32px 0 16px 0;
+    font-size: 20px;
+}
+
+/* ==========================================
+   THỬ THÁCH 1: CĂN GIỮA TUYỆT ĐỐI (FLEXBOX)
+========================================== */
+.center-box {
+    background-color: #4F46E5; /* Màu Xanh Tím */
+    color: #FFFFFF;
+    height: 250px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    
+    /* 3 Dòng ma thuật của Flexbox để căn giữa 2 chiều */
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center;     /* Căn giữa theo chiều dọc */
+}
+
+/* ==========================================
+   THỬ THÁCH 2: MENU DÀN ĐỀU (FLEXBOX)
+========================================== */
+.challenge-2-menu {
+    background-color: #1F2937;
+    padding: 20px;
+    border-radius: 12px;
+    
+    /* Dùng Flexbox dàn đều không gian thừa giữa các phần tử */
+    display: flex;
+    justify-content: space-evenly; 
+}
+
+.challenge-2-menu a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.challenge-2-menu a:hover {
+    color: #10B981; /* Đổi màu xanh ngọc khi di chuột */
+}
+
+/* ==========================================
+   THỬ THÁCH 3: LƯỚI ẢNH 3 CỘT (CSS GRID)
+========================================== */
+.challenge-3-grid {
+    /* Khai báo Grid và chia 3 cột tỷ lệ bằng nhau (1fr) */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px; /* Tạo khoảng cách đều đặn giữa các cột/hàng */
+}
+
+.grid-item {
+    background-color: #10B981; /* Màu Xanh Ngọc */
+    color: #FFFFFF;
+    height: 150px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 18px;
+    
+    /* Mix thêm Flexbox để căn giữa nội dung bên trong từng ô ảnh */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

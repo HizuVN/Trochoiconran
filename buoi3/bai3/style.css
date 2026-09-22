@@ -1,0 +1,57 @@
+/* Từ đây thêm vào tất cả các file/folder */
+:root {
+    --primary: #4F46E5;
+    --secondary: #10B981;
+    --gray-1: #F3F4F6;
+    --bg-color: #FFFFFF;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--gray-1);
+    margin: 0;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 30px;
+}
+
+.services {
+    display: grid;
+    /* Mặc định cho màn hình Desktop (>= 1024px) */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.service-item {
+    background-color: var(--bg-color);
+    padding: 30px;
+    text-align: center;
+    border-radius: 8px;
+    border-top: 4px solid var(--secondary);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    font-weight: bold;
+    color: #374151;
+}
+
+/* Tablet: 768px - 1023px */
+@media (max-width: 1023px) {
+    .services {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile: < 768px */
+@media (max-width: 767px) {
+    .services {
+        grid-template-columns: 1fr;
+    }
+}

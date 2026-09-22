@@ -1,0 +1,175 @@
+/* Từ đây thêm vào tất cả các file/folder */
+
+/* ==========================================
+   HOẠT ĐỘNG 1 & 4: KHAI BÁO VARIABLES TẠI :ROOT
+========================================== */
+:root {
+    /* Bảng màu (Colors) */
+    --primary: #4F46E5;    /* Indigo */
+    --secondary: #10B981;  /* Emerald */
+    --gray-1: #F3F4F6;
+    --gray-2: #9CA3AF;
+    --gray-3: #374151;
+    --bg-color: #FFFFFF;
+
+    /* Khoảng cách (Spacing) */
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-xxl: 48px;
+
+    /* Bo góc (Radius) */
+    --radius-md: 8px;
+    --radius-lg: 12px;
+}
+
+/* Reset CSS */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    /* 100% sử dụng biến var() cho màu sắc và khoảng cách */
+    background-color: var(--gray-1);
+    color: var(--gray-3);
+    padding: var(--spacing-xl);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h2 {
+    color: var(--primary);
+    margin-bottom: var(--spacing-md);
+}
+
+/* ==========================================
+   HOẠT ĐỘNG 2: ABOUT ME (Desktop Mặc Định -> Mobile)
+========================================== */
+.about-me {
+    background-color: var(--bg-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: var(--spacing-xxl);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    
+    /* Mặc định trên Desktop: 2 cột (Flex) */
+    display: flex;
+}
+
+.about-img {
+    flex: 1;
+}
+
+.about-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.about-text {
+    flex: 1;
+    padding: var(--spacing-xxl);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.about-text p {
+    line-height: 1.6;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--bg-color);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: var(--spacing-md);
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #3730A3;
+}
+
+/* Media Query rẽ nhánh cho Mobile (Chuyển thành 1 cột) */
+@media (max-width: 768px) {
+    .about-me {
+        flex-direction: column;
+    }
+    .about-text {
+        padding: var(--spacing-xl);
+    }
+}
+
+/* ==========================================
+   HOẠT ĐỘNG 3: DỊCH VỤ (Tư duy Mobile First)
+========================================== */
+.section-title {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.services-grid {
+    display: grid;
+    gap: var(--spacing-lg);
+    
+    /* Mặc định trên Mobile (< 768px): 1 Cột */
+    grid-template-columns: 1fr;
+}
+
+.service-card {
+    background-color: var(--bg-color);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    font-weight: bold;
+    color: var(--gray-3);
+    /* Điểm nhấn dùng màu primary */
+    border-top: 6px solid var(--primary);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Tablet: Bẻ thành 2 cột */
+@media (min-width: 768px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop: Bẻ thành 4 cột */
+@media (min-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* =========================================================================
+   HOẠT ĐỘNG 4: CODE CŨ (CHƯA REFACTOR) DÙNG LÀM MẪU SO SÁNH
+=========================================================================
+.btn-primary-old {
+    background-color: #4F46E5;
+    color: #FFFFFF;
+    padding: 16px 24px;
+    border-radius: 8px;
+    margin-top: 16px;
+}
+
+GIẢI THÍCH VÌ SAO DÙNG BIẾN (VARIABLES) LẠI DỄ BẢO TRÌ HƠN:
+1. Single Source of Truth (Nguồn chân lý duy nhất): Nếu khách hàng muốn đổi tông màu chủ đạo từ Xanh Tím sang Xanh Dương, bạn chỉ cần sửa 1 lần duy nhất ở `--primary` tại `:root`. Toàn bộ nút bấm, tiêu đề, đường viền của trang web sẽ tự động cập nhật màu mới mà không bị sai sót.
+2. Đồng nhất Thiết kế (Consistency): Sử dụng các biến khoảng cách (như `--spacing-md`, `--spacing-lg`) đảm bảo toàn bộ website có khoảng cách chính xác theo cấp số nhân (chuẩn UI). Thay vì gõ pixel cứng (ví dụ chỗ thì 15px, chỗ thì 18px làm giao diện xộc xệch), biến số bắt buộc team lập trình viên phải tuân thủ chuẩn mực thiết kế.
+========================================================================= */

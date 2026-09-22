@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Bậc Thầy Flexbox & Grid</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- YÊU CẦU 2: BỐ CỤC TRANG TỔNG THỂ (GRID CONTAINER) -->
+    <div class="layout-container">
+        
+        <!-- YÊU CẦU 3: THANH ĐIỀU HƯỚNG HEADER (FLEXBOX) -->
+        <header class="header">
+            <div class="logo">MyPortfolio</div>
+            <nav class="nav-menu">
+                <a href="#">Trang chủ</a>
+                <a href="#">Giới thiệu</a>
+                <a href="#">Dịch vụ</a>
+                <a href="#">Liên hệ</a>
+            </nav>
+        </header>
+
+        <!-- CỘT TRÁI: SIDEBAR -->
+        <aside class="sidebar">
+            <h2>Hồ sơ</h2>
+            <p>Xin chào, tôi là một Senior Frontend Develope.</p>
+        </aside>
+
+        <!-- CỘT PHẢI: MAIN CONTENT -->
+        <main class="main-content">
+            
+            <!-- YÊU CẦU 4: KHU VỰC ABOUT ME (RESPONSIVE) -->
+            <section class="about-me">
+                <div class="about-img">
+                    <!-- Ảnh User Profile / Lập trình viên -->
+                    <img src="avatar.png" alt="Avatar User">
+                </div>
+                <div class="about-text">
+                    <h2>Về Tôi</h2>
+                    <p>Tôi ám ảnh với việc tạo ra những dòng code sạch. Tôi căm ghét việc dùng "margin" bừa bãi và tôn thờ thuộc tính "gap".</p>
+                    <button class="btn-primary">Tải CV ngay</button>
+                </div>
+            </section>
+
+            <!-- YÊU CẦU 5: DANH SÁCH KỸ NĂNG (FLEXBOX WRAP) -->
+            <section class="skills-section">
+                <h2>Kỹ năng nổi bật</h2>
+                <div class="skills-tags">
+                    <span class="skill-tag">HTML5 & Semantic</span>
+                    <span class="skill-tag">CSS3 (Grid/Flexbox)</span>
+                    <span class="skill-tag">JavaScript (ES6+)</span>
+                    <span class="skill-tag">React / Next.js</span>
+                    <span class="skill-tag">Tailwind CSS</span>
+                    <span class="skill-tag">Figma UI/UX</span>
+                    <span class="skill-tag">Git / CI-CD</span>
+                </div>
+            </section>
+
+            <!-- YÊU CẦU 6: KHU VỰC DỊCH VỤ (MOBILE FIRST GRID) -->
+            <section class="services-section">
+                <h2>Dịch vụ cung cấp</h2>
+                <div class="services-grid">
+                    <div class="service-card">Phân tích UI/UX</div>
+                    <div class="service-card">Phát triển Frontend</div>
+                    <div class="service-card">Tối ưu Hiệu suất</div>
+                    <div class="service-card">Bảo trì Hệ thống</div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>&copy; 2026 Bản quyền thuộc về Tấn Điền  Frontend Developer.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
