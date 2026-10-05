@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoạt động thực hành - Buổi 5</title>
+    <!-- AOS CSS CDN (Hoạt động 3) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .activity-section {
+            margin-bottom: 80px;
+            padding: 40px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* --- Hoạt động 1: Nút bấm cảm xúc --- */
+        .btn-send {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            /* Sử dụng transition với cubic-bezier để chuyển động tự nhiên */
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .btn-send:hover {
+            background-color: #45a049;
+            /* Nâng lên 3px và thêm bóng đổ */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-send:active {
+            /* Thu nhỏ lại khi click */
+            transform: translateY(0) scale(0.95);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+
+        /* --- Hoạt động 2: Loading Spinner --- */
+        .spinner-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #e0e0e0;
+            /* Màu sắc khác biệt ở viền trên để tạo hiệu ứng xoay */
+            border-top-color: #3498db;
+            border-radius: 50%;
+            /* Animation xoay 360 độ vô hạn */
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        /* --- Hoạt động 4: Tối ưu hiệu năng (Performance) --- */
+        .performance-demo {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #e74c3c;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+        }
+
+        /* CÁCH KÉM TỐI ƯU (Sử dụng top/left gây Reflow/Repaint liên tục, dễ giật lag) */
+        .box-bad {
+            top: 0;
+            transition: top 0.3s ease;
+        }
+        .box-bad:hover {
+            top: -20px;
+        }
+
+        /* CÁCH TỐI ƯU (Sử dụng transform không gây Reflow, chạy mượt trên GPU) */
+        .box-good {
+            transition: transform 0.3s ease;
+        }
+        .box-good:hover {
+            transform: translateY(-20px);
+        }
+
+        /* --- Hoạt động 3: AOS Scroll Reveal Container --- */
+        .aos-demo-section {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            background-color: #2c3e50;
+            color: white;
+            border-radius: 8px;
+            font-size: 24px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Bài tập thực hành - Buổi 5</h1>
+
+        <!-- Hoạt động 1 -->
+        <div class="activity-section">
+            <h2>Hoạt động 1: "Micro-interactions" - Nút bấm cảm xúc</h2>
+            <button class="btn-send">Gửi tin nhắn</button>
+            <p style="margin-top:20px; font-size:14px; color:#555;">(Hãy thử hover và click vào nút để xem hiệu ứng)</p>
+        </div>
+
+        <!-- Hoạt động 2 -->
+        <div class="activity-section">
+            <h2>Hoạt động 2: "Loading Master" - Tạo Spinner</h2>
+            <div class="spinner-container">
+                <div class="spinner"></div>
+            </div>
+        </div>
+
+        <!-- Hoạt động 4 -->
+        <div class="activity-section">
+            <h2>Hoạt động 4: "Refactoring Performance" - Tối ưu hiệu ứng di chuyển</h2>
+            <p>Di chuột vào 2 khối dưới đây để thấy sự khác biệt về cách viết CSS (Code kém tối ưu dùng <code>top</code> vs Code tối ưu dùng <code>transform: translate</code>).</p>
+            <div class="performance-demo">
+                <div class="box box-bad">Dùng 'top'</div>
+                <div class="box box-good">Dùng 'transform'</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hoạt động 3 -->
+    <h2 style="text-align:center; margin-top: 50px;">Hoạt động 3: "AOS - Scroll Reveal" (Cuộn xuống)</h2>
+    
+    <div class="container">
+        <!-- Khối sử dụng fade-in -->
+        <div class="aos-demo-section" data-aos="fade-in" data-aos-duration="1000">
+            Nội dung Fade In
+        </div>
+
+        <!-- Khối sử dụng slide-up (aos mặc định là fade-up) -->
+        <div class="aos-demo-section" data-aos="fade-up" data-aos-duration="1000">
+            Nội dung Slide Up
+        </div>
+        
+        <!-- Khối sử dụng zoom-in -->
+        <div class="aos-demo-section" data-aos="zoom-in" data-aos-duration="1000">
+            Nội dung Zoom In
+        </div>
+    </div>
+
+    <!-- AOS JS CDN -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Khởi tạo thư viện AOS
+        AOS.init();
+    </script>
+</body>
+</html>
