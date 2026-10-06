@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuần 5: Hiệu Ứng Chuyển Động CSS (Bản UI Nâng Cấp)</title>
+    
+    <!-- Tích hợp thư viện AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Tích hợp thư viện Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Font chữ hiện đại Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #6366f1; /* Tím indigo hiện đại */
+            --secondary: #ec4899; /* Hồng nổi bật */
+            --text-main: #1f2937;
+            --text-light: #6b7280;
+            --bg-color: #f3f4f6;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* Background gradient màu xanh biển mát mẻ, đậm đà và thu hút hơn */
+            background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            /* Gradient cho chữ */
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-bottom: 2px dashed #cbd5e1;
+            padding-bottom: 10px;
+            margin-top: 50px;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: var(--text-main);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Nâng cấp giao diện từng khối bài tập (Card UI) */
+        .section {
+            background: #ffffff;
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px); /* Hiệu ứng nổi lên khi trỏ chuột vào khối */
+        }
+
+        .section-desc {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+        }
+
+        /* 1. Nút Bấm Cảm Xúc (Được nâng cấp màu sắc) */
+        .btn-msg {
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            color: white;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px; /* Bo tròn hoàn toàn */
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-msg:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 15px 25px rgba(99, 102, 241, 0.5); /* Tăng bóng đổ cho có chiều sâu */
+            background: linear-gradient(135deg, #8b5cf6, var(--primary)); /* Đảo gradient */
+        }
+
+        .btn-msg:active {
+            transform: scale(0.95);
+            box-shadow: 0 5px 10px rgba(99, 102, 241, 0.2);
+        }
+
+        /* 2. Loading Spinner */
+        .spinner-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+        }
+        
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #e2e8f0; /* Viền nhạt */
+            border-top-color: var(--secondary); /* Màu hồng */
+            border-right-color: var(--primary); /* Màu tím */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Bài 1: Floating Action Button (FAB) */
+        .fab {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, var(--secondary), #f43f5e);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(236, 72, 153, 0.5);
+            animation: pulse-fab 2s infinite;
+            z-index: 1000;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .fab:hover {
+            transform: scale(1.1);
+            animation: none; /* Dừng nhấp nháy khi trỏ chuột vào */
+        }
+
+        @keyframes pulse-fab {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(236, 72, 153, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(236, 72, 153, 0); }
+        }
+
+        /* Bài 2: Card Flip */
+        .flip-container {
+            display: flex; justify-content: center; margin-top: 30px;
+        }
+        
+        .flip-card {
+            background-color: transparent;
+            width: 320px;
+            height: 230px;
+            perspective: 1200px;
+        }
+
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute; width: 100%; height: 100%;
+            backface-visibility: hidden;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .flip-card-front {
+            background: #ffffff;
+            color: var(--text-main);
+            border: 2px solid #e5e7eb;
+        }
+
+        .flip-card-front img {
+            width: 80px; height: 80px;
+            margin-bottom: 15px;
+            background: #f3f4f6;
+            border-radius: 50%;
+            padding: 5px;
+        }
+
+        .flip-card-front h2 {
+            margin: 0 0 5px 0; border: none; font-size: 1.5rem;
+        }
+
+        .flip-card-back {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            transform: rotateY(180deg);
+        }
+        
+        .flip-card-back h3 { color: white; margin-bottom: 15px; }
+        .flip-card-back p { margin: 5px 0; font-size: 15px; opacity: 0.95; }
+
+        /* Bài 3: Typing Effect giả lập giao diện code Terminal */
+        .typing-wrapper {
+            display: flex; justify-content: center; margin-top: 20px;
+        }
+        
+        .typing-container {
+            background: #1e1e2f; /* Màu tối của trình code */
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        /* Chấm đỏ vàng xanh giống giao diện MacOS */
+        .typing-container::before {
+            content: ''; position: absolute;
+            top: 15px; left: 15px;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: #ff5f56;
+            box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f;
+        }
+
+        .typing-text {
+            color: #50fa7b; /* Chữ xanh neon code */
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #50fa7b;
+            margin: 20px 0 0 0;
+            font-size: 22px;
+            font-weight: 600;
+            animation: typing 4s steps(35, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing { from { width: 0 } to { width: 440px } }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #50fa7b; } }
+
+        /* Bài 4: Parallax Image */
+        .parallax {
+            /* Lớp phủ mờ màu đen để chữ dễ đọc hơn kết hợp ảnh xịn */
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            height: 400px;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            margin-top: 20px;
+        }
+        
+        .parallax h1 {
+            color: white;
+            -webkit-text-fill-color: white;
+            font-size: 3.5rem;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            border: none;
+            letter-spacing: 2px;
+        }
+
+        /* Bài 5: Hamburger Menu */
+        .hamburger-wrapper {
+            display: flex; justify-content: center; align-items: center; height: 80px;
+        }
+        .hamburger {
+            cursor: pointer; width: 40px; height: 30px;
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .hamburger .line {
+            width: 100%; height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .hamburger.active .line:nth-child(1) { transform: translateY(12.5px) rotate(45deg); }
+        .hamburger.active .line:nth-child(2) { opacity: 0; transform: scale(0.5); }
+        .hamburger.active .line:nth-child(3) { transform: translateY(-12.5px) rotate(-45deg); }
+
+        /* Bài 6: Skill Bar Animation */
+        .skills {
+            max-width: 700px; margin: 30px auto 0;
+        }
+        .skill-item { margin-bottom: 25px; }
+        
+        .skill-header {
+            display: flex; justify-content: space-between; margin-bottom: 10px;
+            font-weight: 600; color: var(--text-main);
+        }
+        
+        .skill-bar-container {
+            width: 100%; background-color: #e2e8f0;
+            border-radius: 20px; height: 18px; overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .skill-bar {
+            height: 100%; border-radius: 20px; width: 0;
+        }
+        
+        .html-bar {
+            background: linear-gradient(90deg, #ff7e5f, #feb47b);
+            animation: fillHTML 2s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+        }
+        
+        .css-bar {
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            animation: fillCSS 2s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s;
+        }
+        
+        .js-bar {
+            background: linear-gradient(90deg, #f6d365, #fda085);
+            animation: fillJS 2s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.1s;
+        }
+        
+        @keyframes fillHTML { to { width: 90%; } }
+        @keyframes fillCSS { to { width: 85%; } }
+        @keyframes fillJS { to { width: 75%; } }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="animate__animated animate__fadeInDown">Hiệu Ứng Chuyển Động CSS</h1>
+        <p class="subtitle animate__animated animate__fadeInUp">Phiên bản giao diện nâng cấp (UI/UX) cực thu hút</p>
+        
+        <!-- ================= HOẠT ĐỘNG THỰC HÀNH ================= -->
+        <h2 data-aos="fade-right">I. Hoạt Động Thực Hành (In-Class)</h2>
+
+        <!-- Hoạt động 1 -->
+        <div class="section" data-aos="fade-up">
+            <h3>1. Micro-interactions: Nút Bấm Cảm Xúc</h3>
+            <p class="section-desc">Hiệu ứng đổ bóng phát sáng (glow), màu sắc gradient mượt mà và scale nảy nhẹ khi tương tác.</p>
+            <button class="btn-msg">Gửi tin nhắn 🚀</button>
+        </div>
+
+        <!-- Hoạt động 2 -->
+        <div class="section" data-aos="fade-up" data-aos-delay="100">
+            <h3>2. Loading Master: Spinner</h3>
+            <p class="section-desc">Vòng xoay loading đa sắc sử dụng 2 viền màu sinh động thay vì 1 màu đơn điệu.</p>
+            <div class="spinner-container">
+                <div class="spinner"></div>
+            </div>
+        </div>
+
+        <!-- ================= BÀI TẬP VỀ NHÀ ================= -->
+        <h2 data-aos="fade-right">II. Bài Tập Tự Rèn Luyện (Homework)</h2>
+
+        <!-- Bài 2 (Card Flip) -->
+        <div class="section" data-aos="fade-up">
+            <h3>Bài 2: Card Flip Effect (Xoay thẻ nhân sự)</h3>
+            <p class="section-desc">Hover vào thẻ để xem hiệu ứng xoay 3D với nội dung sắc nét ở cả hai mặt.</p>
+            <div class="flip-container">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <!-- Chèn 1 avatar giả lập cho đẹp -->
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Avatar">
+                            <h2>Nguyễn Văn A</h2>
+                            <p style="color: var(--text-light); font-weight: 500;">Front-end Developer</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Thông Tin Liên Hệ</h3>
+                            <p>📧 contact@frontend.dev</p>
+                            <p>📞 0123 456 789</p>
+                            <p>🌐 dev-portfolio.vn</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bài 3 (Typing) -->
+        <div class="section" data-aos="fade-up">
+            <h3>Bài 3: Typing Effect</h3>
+            <p class="section-desc">Mô phỏng lại giao diện Terminal (cửa sổ lệnh) của macOS với chữ xanh neon code.</p>
+            <div class="typing-wrapper">
+                <div class="typing-container">
+                    <p class="typing-text">Tôi là một Web Developer...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bài 4 (Parallax) -->
+        <div class="section" data-aos="fade-up">
+            <h3>Bài 4: Parallax Image</h3>
+            <p class="section-desc">Lớp ảnh phủ mờ màu tối (overlay) kết hợp chữ nổi bật và hiệu ứng cuộn chiều sâu.</p>
+            <div class="parallax">
+                <h1 class="animate__animated animate__pulse animate__infinite">Trải Nghiệm Đỉnh Cao</h1>
+            </div>
+        </div>
+
+        <!-- Bài 5 (Hamburger) -->
+        <div class="section" data-aos="fade-up">
+            <h3>Bài 5: Hamburger Menu</h3>
+            <p class="section-desc">Nút menu gradient dầy dặn, biến hóa mượt mà sang chữ X.</p>
+            <div class="hamburger-wrapper">
+                <div class="hamburger" id="hamburger-menu">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bài 6 (Skill Bar) -->
+        <div class="section" data-aos="fade-up">
+            <h3>Bài 6: Skill Bar Animation</h3>
+            <p class="section-desc">Thanh kỹ năng chạy mượt mà cùng các dải màu Gradient rực rỡ.</p>
+            <div class="skills">
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span>HTML5 / Cấu trúc Web</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar html-bar"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span>CSS3 / Animations</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar css-bar"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span>JavaScript ES6+</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar js-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bài 1 (Floating Action Button) -->
+    <!-- Đặt icon tin nhắn bằng svg thay cho ký tự text để đẹp hơn -->
+    <a href="#" class="fab" title="Liên hệ ngay">
+        <svg style="width:30px;height:30px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2M20,16H5.17L4,17.17V4H20V16M18,14H6V12H18V14M18,10H6V8H18V10M18,6H6V4H18V6Z" />
+        </svg>
+    </a>
+
+    <!-- Khởi tạo thư viện AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Khởi tạo AOS Scroll Reveal
+        AOS.init({
+            duration: 800,
+            once: false, 
+        });
+
+        // Toggle lớp active cho Bài 5: Hamburger Menu
+        const hamburger = document.getElementById('hamburger-menu');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
